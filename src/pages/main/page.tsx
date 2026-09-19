@@ -70,12 +70,12 @@ export default function MainPage () {
             <img src="icons/medal.svg" alt="medal-icon" className={styles.advantageIcon}/>
             <span className={styles.advantageText}>{"Высшее качество и надежность продукции"}</span>
           </div>
-          <img src="icons/point.svg" alt="point-icon" className={styles.advantagesPoint}/>
+          <div className={styles.advantagesPoint}/>
           <div className={styles.advantageBlock}>
             <img src="icons/handshake.svg" alt="handshake-icon" className={styles.advantageIcon}/>
             <span className={styles.advantageText}>{"Поддержка на всех этапах покупки"}</span>
           </div>
-          <img src="icons/point.svg" alt="point-icon" className={styles.advantagesPoint}/>
+          <div className={styles.advantagesPoint}/>
           <div className={styles.advantageBlock}>
             <img src="icons/car.svg" alt="car-icon" className={styles.advantageIcon}/>
             <span className={styles.advantageText}>{"Современны технологии и комфорт"}</span>
