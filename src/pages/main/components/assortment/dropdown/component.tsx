@@ -15,7 +15,6 @@ export const DropdownSelectorInput: React.FC<{
   const [ filteredItems, setFilteredItems ] = useState<Array<string>>([]);
   const [ inputValue, setInputValue ] = useState<string>("");
   const [ isOpen, setIsOpen ] = useState<boolean>(false);
-  // const [ selectedItem, setSelectedItem ] = useState<string|null>(null);
   const [ isSelected, setIsSelected ] = useState<boolean>(false);
 
   const dropdownContainerRef = useRef<HTMLDivElement>(null);

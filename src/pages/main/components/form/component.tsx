@@ -3,9 +3,14 @@ import { useEffect, useState } from 'react';
 import { SpawnAnimationWrapper } from "../../../common/effects/component";
 export default function BitrixForm () {
 
+  const testMode = false;
+
   const [ formStatus, setFormStatus ] = useState<string>("default");
+  const [ formIsSended, setFormIsSended ] = useState<boolean>(false);
+
   const handleFormSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (formIsSended) return;
     setFormStatus("loading");
     const formData = new FormData(event.target);
     const name = formData.get("name")?.toString();
@@ -15,12 +20,13 @@ export default function BitrixForm () {
     if (email && !email.includes(".") && !email.includes("@") && !(email.length >= 5)) { setFormStatus("incorrect-data-error"); return}
     if (phone && !(phone.length>10)) { setFormStatus("incorrect-data-error"); return }
     
-    const response = await fetch("/api/send_form/", {
+    const response = await fetch(`${testMode?"http://localhost:5000":""}/api/send_form/`, {
+      headers: {"Content-Type": "application/json",},
       method: "POST",
-      body: JSON.stringify({name, email, phone}),
+      body: JSON.stringify({name: name, email: email, phone: phone}),
     });
     if (!response.ok) {setFormStatus("req-error"); return}
-
+    else {setFormIsSended(true); setFormStatus("success") };
   }
 
   const formStatusTextTemplates: { [key: string]: string } = {
@@ -30,37 +36,39 @@ export default function BitrixForm () {
     "button:loading": "Загрузка...",
     "button:success": "Успешно!",
     "button:default": "Отправить",
+    "req-error": "Ошибка запроса!",
+    "loading": "Идёт обработка...",
+    "success": "Данные отправлены!"
   }
+
 
   useEffect(()=>{
     const formInputs = document.querySelectorAll<HTMLInputElement>(`.${styles.formInputContainer}`);
-    const onInputChange = (event: Event) => {
-      const parent = event.currentTarget as HTMLDivElement;
-      const target = event.target as HTMLInputElement;
-      if (!target || !parent) return;
-      if (target.value) parent.classList.add(styles.focused);
-      if (document.activeElement === target) return;
-      else parent.classList.remove(styles.focused);
-    }
+    // const onInputChange = (event: Event) => {
+    //   const parent = event.currentTarget as HTMLDivElement;
+    //   const target = event.target as HTMLInputElement;
+    //   if (!target || !parent) return;
+    //   if (target.value) parent.classList.add(styles.focused);
+    //   if (document.activeElement === target) return;
+    //   else parent.classList.remove(styles.focused);
+    // }
     const oninputFocusIn = (event: Event) => {
       const parent = event.currentTarget as HTMLDivElement;
       const target = event.target as HTMLInputElement;
-      if (target.value) return;
       parent.classList.add(styles.focused);
     }
     const oninputFocusOut = (event: Event) => {
       const parent = event.currentTarget as HTMLDivElement;
       const target = event.target as HTMLInputElement;
-      if (target.value) return;
       parent.classList.remove(styles.focused);
     }
     formInputs.forEach((formInput) => {
-      formInput.addEventListener("input", onInputChange);
+      // formInput.addEventListener("input", onInputChange);
       formInput.addEventListener("focusin", oninputFocusIn);
       formInput.addEventListener("focusout", oninputFocusOut);
     });
     return () => formInputs.forEach((formInput) => {
-      formInput.removeEventListener("input", onInputChange);
+      // formInput.removeEventListener("input", onInputChange);
       formInput.removeEventListener("focusin", oninputFocusIn);
       formInput.removeEventListener("focusout", oninputFocusOut);
     });

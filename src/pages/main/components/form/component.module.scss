@@ -84,16 +84,17 @@
         position: relative;
         .additionText {
           position: absolute;
-          top: 13px;
           left: 10px;
           font-family: "main";
-          font-size: 14px;
           background: white;
-          border: 5px;
+          border-radius: 5px;
           pointer-events: none;
           transition: all .3s ease;
           padding-left: 5px;
           padding-right: 5px;
+          top: -6px;
+          font-weight: 600;
+          font-size: 12px;
         }
         .formInput {
           width: 100%;
@@ -107,10 +108,7 @@
         }
         &.focused {
           .additionText {
-          top: -6px;
           color: var(--color-main);
-          font-weight: 600;
-          font-size: 12px;
           }
           .formInput {
             outline: none;
@@ -164,4 +162,14 @@
       }
     }
   }
+}
+.formInput {
+  &:-webkit-autofill {
+    animation-name: onAutoFillStart;
+    animation-duration: 0.001s; // должна быть > 0, иначе событие не сработает
+  }
+}
+@keyframes onAutoFillStart {
+  from {}
+  to {}
 }

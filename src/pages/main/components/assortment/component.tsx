@@ -7,6 +7,8 @@ import { Car } from "./interfaces";
 
 export default function SearchAssortment () {
 
+  const testMode = false;
+
   const [ upload, setUpload ] = useState<Car[]|null>(null);
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
   const [ isError, setIsError ] = useState<boolean>(false);
@@ -21,10 +23,11 @@ export default function SearchAssortment () {
   const uploadFromDatabase = useCallback(async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/cars");
+      const response = await fetch(`${testMode?"http://localhost:5000":""}/api/cars`);
       if (!response.ok) {setIsError(true);return}
       else setIsError(false);
       const newUpload = await response.json() as Car[];
+  
       setUpload(newUpload);
       setBrandList(Array.from(new Set(newUpload.map( car => car.brand ))));
     } catch (error) { setIsError(true); console.error("Failed to upload auto-list:", error) }
@@ -34,13 +37,13 @@ export default function SearchAssortment () {
 
   useEffect(()=>{
     if (!upload) return;
-    if (brand) setModelList( brand? upload.filter(car => car.brand === brand).map(car => car.model) : [] );
+    setModelList( brand? upload.filter(car => car.brand === brand).map(car => car.model) : [] );
     let tempAutoList = upload;
     tempAutoList = tempAutoList.filter(car => hasMileage? car.mileage > 0 : car.mileage == 0 );
-    if (brand) tempAutoList.filter(car => car.brand === brand);
-    if (model) tempAutoList.filter(car => car.model === model);
+    if (brand) tempAutoList = tempAutoList.filter(car => car.brand === brand);
+    if (model) tempAutoList = tempAutoList.filter(car => car.model === model);
     setfilteredAutoList(tempAutoList);
-  }, [ brand, model, hasMileage ]);
+  }, [ brand, model, hasMileage, upload ]);
 
   return ( <div className={styles.searchAssortmentContainer} id="assortment" >
     <SpawnAnimationWrapper><div className={styles.searchAssortmentTitle}>{"Подберите себе автомобиль"}</div></SpawnAnimationWrapper>

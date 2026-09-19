@@ -46,7 +46,7 @@ export const AutoList: React.FC<{
     <div className={styles.priceBlock}>
       <div className={styles.prices}>
         <div className={styles.normalPrice}>{`${data.price}`}<img src="/icons/ruble.svg" alt="rubble-icon" className={styles.rubleIcon}/></div>
-        { data.loanPrice && ( <div className={styles.loanPrice}>{`${data.loanPrice}`}<img src="/icons/ruble.svg" alt="rubble-icon" className={styles.rubleIcon}/></div> )}
+        { data.loanPrice != 0 && ( <div className={styles.loanPrice}>{`${data.loanPrice}`}<img src="/icons/ruble.svg" alt="rubble-icon" className={styles.rubleIcon}/></div> )}
       </div>
       <a href="/#form" className={styles.buyButton}>{"Связаться"}</a>
     </div>
@@ -55,17 +55,9 @@ export const AutoList: React.FC<{
   return ( <div className={styles.autoListContainer}>
     { isError && ( <div className={styles.error}> {"Возникла ошибка при загрузке"} </div> )}
     { isLoading && ( <div className={styles.loading}> {"Загрузка"} </div> ) }
-    { isError && isLoading && !list.length && ( <div className={styles.empty}>{"Нет данных"}</div> ) }
-    {  !isError && !isLoading && list.length &&  ( <div className={styles.autoList}>
+    { !isError && !isLoading && !list.length && ( <div className={styles.empty}>{"Ничего не найдено"}</div> ) }
+    { !isError && !isLoading && !!list.length &&  ( <div className={styles.autoList}>
       {list.map((carData, index) => (<AutomobileCard data={carData} key={`auto-${index}`}/>))}
     </div> ) }
-    {/* <div className={styles.autoList}>
-      <AutomobileCard data={defaultCar}/>
-      <AutomobileCard data={defaultCar}/>
-      <AutomobileCard data={defaultCar}/>
-      <AutomobileCard data={defaultCar}/>
-      <AutomobileCard data={defaultCar}/>
-      <AutomobileCard data={defaultCar}/>
-    </div> */}
   </div> )
 }

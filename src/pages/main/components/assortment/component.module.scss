@@ -180,6 +180,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: auto;
     margin-left: 10px; margin-right: 10px;
+    padding-bottom: 10px;
     .automobileCard {
       --auto-card-margin: 5px;
       box-sizing: border-box;
@@ -228,7 +229,7 @@
           transition: .3s all ease;
           position: absolute;
           inset: 0;
-          background: linear-gradient(to top,#011147, #00000000);
+          background: linear-gradient(to top,#011147, #0000009a);
         }
         &:hover {
           .characteristic {

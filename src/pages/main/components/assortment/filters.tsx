@@ -1,5 +1,5 @@
 import styles from "./component.module.scss";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { DropdownSelectorInput } from "./dropdown/component";
 import { Car } from "./interfaces";
 export const SearchFilters: React.FC<{
@@ -12,6 +12,15 @@ export const SearchFilters: React.FC<{
 }> = ({brandList, modelList, onSetHasMileage = null, onBrandSelect = null, onModelSelect = null, isError, isLoading, isModelFilterDisabled }) => {
 
   const [ hasMileage, setHasMileage ] = useState<boolean>(false);
+  const [ brand, setBrand ] = useState<string>("");
+  const [ model, setModel ] = useState<string>("");
+
+  useEffect(()=>{
+    if (onSetHasMileage) onSetHasMileage(hasMileage);
+    if (onBrandSelect) onBrandSelect(brand);
+    if (onModelSelect) onModelSelect(model);
+  }, [hasMileage, brand, model])
+
   useEffect(()=>{
     const selectors = Array.from(document.querySelectorAll<HTMLButtonElement>(`.${styles.filterMileageButton}`));
     const currentSelector = hasMileage?selectors[1]:selectors[0];
@@ -47,6 +56,7 @@ export const SearchFilters: React.FC<{
         <DropdownSelectorInput options={brandList}
         placeholder={"Найдите желаемый бренд"}
         isError={isError} isLoading={isLoading}
+        onSelect={(i)=>setBrand(i)}
         />
       </div>
       <div className={styles.dropdownContainer}>
@@ -55,6 +65,7 @@ export const SearchFilters: React.FC<{
         placeholder={isModelFilterDisabled?"Выберите бренд авто":"Введите модель авто"}
         isError={isError} isLoading={isLoading}
         isDisabled={isModelFilterDisabled}
+        onSelect={(i)=>setModel(i)}
         />
       </div>
     </div>
