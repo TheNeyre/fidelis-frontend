@@ -70,13 +70,13 @@ export default function Footer () {
   return ( <footer id="contacts" className={styles.footerContainer}>
 
     <div className={styles.footerContent}>
-      {Object.entries(FOOTER_CONTENT).map(([sectionTitle, sectionContent]) => (
-        <div className={styles.footerSection}>
+      {Object.entries(FOOTER_CONTENT).map(([sectionTitle, sectionContent], sectionIndex) => (
+        <div className={styles.footerSection} key={sectionIndex}>
           <h4 className={styles.sectionTitle}>{sectionTitle}</h4>
           <ul className={styles.sectionElements}>
-            {sectionContent.map((footerElement, index) => (
-              <li key={index} className={styles.sectionElement}>
-                { footerElement.icon && ( <img src={`/icons/${footerElement.icon}.svg`} alt={`footer-element-${index}`} className={styles.elementIcon}/> ) }
+            {sectionContent.map((footerElement, elementIndex) => (
+              <li key={elementIndex} className={styles.sectionElement}>
+                { footerElement.icon && ( <img src={`/icons/${footerElement.icon}.svg`} alt={`footer-element-${elementIndex}`} className={styles.elementIcon}/> ) }
                 { footerElement.link?( <a href={footerElement.link} target="_blank" rel="noopener noreferrer" className={styles.elementText}>
                   {footerElement.title}
                 </a> ):( <span className={styles.elementText} onClick={()=>copyText(footerElement.copytext)}>
