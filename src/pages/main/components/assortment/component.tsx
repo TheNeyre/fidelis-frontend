@@ -32,14 +32,14 @@ export default function SearchAssortment () {
       setBrandList(Array.from(new Set(newUpload.map( car => car.brand ))));
     } catch (error) { setIsError(true); console.error("Failed to upload auto-list:", error) }
     finally { setIsLoading(false) }
-  }, []);
+  }, [testMode]);
   useEffect(() => {uploadFromDatabase()}, [uploadFromDatabase]);
 
   useEffect(()=>{
     if (!upload) return;
     setModelList( brand? upload.filter(car => car.brand === brand).map(car => car.model) : [] );
     let tempAutoList = upload;
-    tempAutoList = tempAutoList.filter(car => hasMileage? car.mileage > 0 : car.mileage == 0 );
+    tempAutoList = tempAutoList.filter(car => hasMileage? car.mileage > 0 : car.mileage === 0 );
     if (brand) tempAutoList = tempAutoList.filter(car => car.brand === brand);
     if (model) tempAutoList = tempAutoList.filter(car => car.model === model);
     setfilteredAutoList(tempAutoList);

@@ -1,7 +1,6 @@
 import styles from "./component.module.scss";
 import { useState, useEffect } from "react";
 import { DropdownSelectorInput } from "./dropdown/component";
-import { Car } from "./interfaces";
 export const SearchFilters: React.FC<{
   brandList: string[],
   modelList: string[],
@@ -19,7 +18,9 @@ export const SearchFilters: React.FC<{
     if (onSetHasMileage) onSetHasMileage(hasMileage);
     if (onBrandSelect) onBrandSelect(brand);
     if (onModelSelect) onModelSelect(model);
-  }, [hasMileage, brand, model])
+  }, [hasMileage, brand, model,
+    onSetHasMileage, onBrandSelect, onModelSelect
+  ])
 
   useEffect(()=>{
     const selectors = Array.from(document.querySelectorAll<HTMLButtonElement>(`.${styles.filterMileageButton}`));

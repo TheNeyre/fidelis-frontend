@@ -54,12 +54,10 @@ export default function BitrixForm () {
     // }
     const oninputFocusIn = (event: Event) => {
       const parent = event.currentTarget as HTMLDivElement;
-      const target = event.target as HTMLInputElement;
       parent.classList.add(styles.focused);
     }
     const oninputFocusOut = (event: Event) => {
       const parent = event.currentTarget as HTMLDivElement;
-      const target = event.target as HTMLInputElement;
       parent.classList.remove(styles.focused);
     }
     formInputs.forEach((formInput) => {
@@ -96,7 +94,7 @@ export default function BitrixForm () {
           <input type="text" name="phone" className={styles.formInput}/>
           <div className={styles.additionText}>{"Номер телефона"}</div>
         </div>
-        <button type="submit" className={`${styles.submitButton} ${formStatus=="loading"?styles.submitButtonLoading:""} ${formStatus=="success"?styles.submitButtonSuccess:""}`}>{["loading", "success", "default"]
+        <button type="submit" className={`${styles.submitButton} ${formStatus==="loading"?styles.submitButtonLoading:""} ${formStatus==="success"?styles.submitButtonSuccess:""}`}>{["loading", "success", "default"]
         .includes(formStatus)?formStatusTextTemplates[`button:${formStatus}`]:formStatusTextTemplates["button:default"]}</button>
       </form>
       </div> 

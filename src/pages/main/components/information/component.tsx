@@ -1,5 +1,4 @@
 import styles from "./component.module.scss";
-import { SpawnAnimationWrapper } from "../../../common/effects/component";
 import CompanyActivityFields from "./activityFields";
 import CompanyParnterList from "./partnerList";
 import CompanyTeamList from "./teamList";

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { ProgressiveLayerBlur } from "../effects/component";
 import styles from "./component.module.scss";
 export default function Header () {
   const [ windowIsSmall, setWindowIsSmall ] = useState<boolean>(false);

@@ -1,4 +1,4 @@
-import { Children, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import styles from "./effects.module.scss";
 
@@ -40,13 +40,13 @@ export const SpawnAnimationWrapper: React.FC<{
       const currentTop = spawner.getBoundingClientRect().top;
       if (currentTop < bottomTrigger) {
         if (onSpawn) onSpawn();
-        if (delay != 0) setTimeout(()=>spawner.classList.add(styles.spawn), delay*1000);
+        if (delay !== 0) setTimeout(()=>spawner.classList.add(styles.spawn), delay*1000);
         else spawner.classList.add(styles.spawn);
       }
     }
     scrollCheck(); window.addEventListener("scroll", scrollCheck);
     return () => window.removeEventListener("scroll", scrollCheck);
-  },[]);
+  },[delay, onSpawn]);
   return ( <div className={styles.spawnAnimationWrapper} ref={spawnerRef} style={getCssVariables()}>
     {children}
   </div> )

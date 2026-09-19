@@ -1,5 +1,4 @@
 import styles from "./component.module.scss";
-import { useState, useEffect } from "react";
 import { Car } from "./interfaces";
 
 export const AutoList: React.FC<{
@@ -33,8 +32,8 @@ export const AutoList: React.FC<{
         <div>Тип топлива: <span className={styles.characteristicValue}>{data.engineFuelType}</span></div>
         <div>Объём: <span className={styles.characteristicValue}>{data.engineVolume}</span></div>
         <div>Мощность: <span className={styles.characteristicValue}>{data.enginePower}</span></div>
-        <div>ПТС: <span className={styles.characteristicValue}>{data.vrc=="original"?"оригинал":"копия"}</span></div>
-        <div>Положение руля: <span className={styles.characteristicValue}>{data.steeringWheel=="left"?"левый":"правый"}</span></div>
+        <div>ПТС: <span className={styles.characteristicValue}>{data.vrc==="original"?"оригинал":"копия"}</span></div>
+        <div>Положение руля: <span className={styles.characteristicValue}>{data.steeringWheel==="left"?"левый":"правый"}</span></div>
       </div>
       <div className={styles.cardGradient}/>
       <img src={`/imgs/cars/${data.id}.png`} alt={`car-${data.id}`} className={styles.cardImage}/>
@@ -46,7 +45,7 @@ export const AutoList: React.FC<{
     <div className={styles.priceBlock}>
       <div className={styles.prices}>
         <div className={styles.normalPrice}>{`${data.price}`}<img src="/icons/ruble.svg" alt="rubble-icon" className={styles.rubleIcon}/></div>
-        { data.loanPrice != 0 && ( <div className={styles.loanPrice}>{`${data.loanPrice}`}<img src="/icons/ruble.svg" alt="rubble-icon" className={styles.rubleIcon}/></div> )}
+        { data.loanPrice !== 0 && ( <div className={styles.loanPrice}>{`${data.loanPrice}`}<img src="/icons/ruble.svg" alt="rubble-icon" className={styles.rubleIcon}/></div> )}
       </div>
       <a href="/#form" className={styles.buyButton}>{"Связаться"}</a>
     </div>

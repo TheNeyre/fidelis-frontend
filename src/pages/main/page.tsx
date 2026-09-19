@@ -3,8 +3,8 @@ import Footer from "../common/footer/component";
 
 import styles from "./page.module.scss";
 
-import { ProgressiveLayerBlur, SpawnAnimationWrapper } from "../common/effects/component";
-import { useEffect, useRef } from "react";
+import { ProgressiveLayerBlur } from "../common/effects/component";
+import { useEffect } from "react";
 
 import BitrixForm from "./components/form/component";
 import CompanyInformation from "./components/information/component";
@@ -18,7 +18,7 @@ export default function MainPage () {
     if (downbar) downbar.classList.add(styles.downbarSlideIn);
     const windowScrollHandle = () => {
       if (!downbar) return;
-      if (window.scrollY != 0) downbar.classList.remove(styles.downbarSlideIn);
+      if (window.scrollY !== 0) downbar.classList.remove(styles.downbarSlideIn);
       else downbar.classList.add(styles.downbarSlideIn);
     }
     const windowResizeHandle = () => {
