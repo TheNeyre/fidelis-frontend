@@ -84,7 +84,7 @@ export default function BitrixForm () {
         </div>
         <div className={styles.formInputContainer}>
           <input type="text" name="name" className={styles.formInput}/>
-          <div className={styles.additionText}>{"Как в вам обращаться?"}</div>
+          <div className={styles.additionText}>{"Как к вам обращаться?"}</div>
         </div>
         <div className={styles.formInputContainer}>
           <input type="text" name="email" className={styles.formInput}/>
