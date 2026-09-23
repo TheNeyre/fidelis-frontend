@@ -1,6 +1,7 @@
 import Header from "../common/header/component";
 import Footer from "../common/footer/component";
 
+
 import styles from "./page.module.scss";
 
 import { ProgressiveLayerBlur } from "../common/effects/component";
