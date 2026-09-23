@@ -54,7 +54,7 @@ export default function Header () {
     <ul className={styles.header} ref={headerRef}>
       <li className={`${styles.headerElement} ${styles.firstHeaderElement}`}> <a href="#main">{"главная"}</a> </li>
       <li className={styles.headerElement}> <a href="#companyInformation">{"о нас"}</a> </li>
-      <li className={styles.headerElement}> <a href="#assortment">{"ассортимент"}</a> </li>
+      <li className={styles.headerElement}> <a href="#assortment">{"авто в продаже"}</a> </li>
       <li className={styles.headerElement}> <a href="#contacts">{"контакты"}</a> </li>
       <li className={` ${styles.lastHeaderElement}`}> <p className={styles.lastHeaderElementContent}><a href="/#form">{"связаться"}</a></p>
       <img src="/icons/arrow-right.svg" alt="contact-us-icon" className={styles.contactUsIcon}/> </li>

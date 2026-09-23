@@ -3,7 +3,7 @@ import { SpawnAnimationWrapper, AnimatedNumber } from "../../../common/effects/c
 import { useState } from "react";
 export default function CompanyParnterList () {
 
-  const partners = ["baic", "bestune", "dongfeng", "forthing", "gac", "mg", "rox", "swm", "umo"];
+  const partners = ["umo", "rox", "baic", "bestune", "dongfeng", "forthing", "gac", "mg", "swm"];
   const [isAnimate, setIsAnimate] = useState<boolean>(false);
   return ( <SpawnAnimationWrapper onSpawn={() => setIsAnimate(true)}>
     <div className={styles.partnerListContainer}>

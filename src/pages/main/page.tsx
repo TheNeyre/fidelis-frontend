@@ -78,7 +78,7 @@ export default function MainPage () {
           <div className={styles.advantagesPoint}/>
           <div className={styles.advantageBlock}>
             <img src="icons/car.svg" alt="car-icon" className={styles.advantageIcon}/>
-            <span className={styles.advantageText}>{"Современны технологии и комфорт"}</span>
+            <span className={styles.advantageText}>{"Современные технологии и комфорт"}</span>
           </div>
         </div>
       </div>
