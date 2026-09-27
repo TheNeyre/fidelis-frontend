@@ -33,7 +33,7 @@ export default function CompanyActivityFields () {
         <div>
           <ActivityFieldCard
           numer={1} header={"Основное"} subHeader={"Дилерские продажи"}
-          description={"Новые автомобили оффициальных брендов, автомобили с гарантией производителя, прямые поставки от партнёров"}
+          description={"Новые автомобили официальных брендов, автомобили с гарантией производителя, прямые поставки от партнёров"}
           isMain={true}/>
         </div>
         <div className={styles.additionActivityFields}>

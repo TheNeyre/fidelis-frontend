@@ -62,7 +62,7 @@ export default function MainPage () {
           <span className={styles.companyName}>{"ФИДЕЛИСМОЛЛ ГРУПП"}</span>
         </div>
         <div className={styles.titleText}>
-          {"ДИЛЛЕР"} <br /> {"ПРОВЕРЕННЫХ"} <br /> {"АВТО"}
+          {"ДИЛЕР"} <br /> {"ПРОВЕРЕННЫХ"} <br /> {"АВТО"}
         </div>
         <div className={styles.secondTextLine}></div>
         <div className={styles.secondText}>{"Проверенные автомобили"} <br /> {"по выгодным ценам"}</div>
