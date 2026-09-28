@@ -12,4 +12,5 @@ export interface Car {
   steeringWheel: "left" | "right",
   price: number,
   loanPrice: number,
+  specialType: string,
 }
