@@ -1,4 +1,4 @@
-import styles from "./component.module.scss"
+import styles from "./component.module.scss";
 import { useEffect, useState, useCallback } from "react";
 import { SpawnAnimationWrapper } from "../../../common/effects/component";
 import { AutoList } from "./autoList";
@@ -8,6 +8,24 @@ import { Car } from "./interfaces";
 export default function SearchAssortment () {
 
   const testMode = false;
+
+  const defaultCar : Car = {
+    id: 6,
+    brand: "Brand",
+    model: "model",
+    year: 2026,
+    gearbox: "АКПП",
+    mileage: 100,
+    engineFuelType: "АИ-92",
+    engineVolume: 10,
+    enginePower: 100,
+    vrc: "original",
+    steeringWheel: "left",
+    price: 100000000,
+    loanPrice: 1000000,
+    specialType: "",
+  }
+  const testCarList: Car[] = [defaultCar, defaultCar, defaultCar]
 
   const [ upload, setUpload ] = useState<Car[]|null>(null);
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
@@ -64,9 +82,9 @@ export default function SearchAssortment () {
     <div className={styles.searchAssortmentPositionFix2}>
     <SpawnAnimationWrapper>
       <AutoList
-      list={filteredAutoList}
-      isError={isError}
-      isLoading={isLoading}
+      list={!testMode?filteredAutoList:testCarList}
+      isError={!testMode?isError:false}
+      isLoading={!testMode?isLoading:false}
       />
     </SpawnAnimationWrapper>
     </div>

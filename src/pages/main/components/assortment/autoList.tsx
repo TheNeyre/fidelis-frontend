@@ -7,22 +7,6 @@ export const AutoList: React.FC<{
   isLoading: boolean
   }> = ({list, isError , isLoading }) => {
 
-    const defaultCar : Car = {
-      id: 1,
-      brand: "Brand",
-      model: "model",
-      year: 2026,
-      gearbox: "АКПП",
-      mileage: 100,
-      engineFuelType: "АИ-92",
-      engineVolume: 10,
-      enginePower: 100,
-      vrc: "original",
-      steeringWheel: "left",
-      price: 100000000,
-      loanPrice: 1000000,
-      specialType: "",
-    }
 
   const AutomobileCard: React.FC<{data: Car}> = ({data}) => ( <div className={styles.automobileCard}>
     <div className={styles.cardImageBlock}>
@@ -31,7 +15,7 @@ export const AutoList: React.FC<{
         <div>Год выпуска: <span className={styles.characteristicValue}>{data.year}</span></div>
         { !!data.mileage && ( <div>Пробег: <span className={styles.characteristicValue}>{data.mileage}</span> км</div> ) }
         <div>Тип топлива: <span className={styles.characteristicValue}>{data.engineFuelType}</span></div>
-        <div>Объём: <span className={styles.characteristicValue}>{data.engineVolume}</span> {data.specialType=="electric"?"кВт/ч":"л."}</div>
+        <div>Объём: <span className={styles.characteristicValue}>{data.engineVolume}</span> {data.specialType==="electric"?"кВт/ч":"л."}</div>
         <div>Мощность: <span className={styles.characteristicValue}>{data.enginePower}</span> л.с.</div>
         <div>ПТС: <span className={styles.characteristicValue}>{data.vrc==="original"?"оригинал":"копия"}</span></div>
         <div>Положение руля: <span className={styles.characteristicValue}>{data.steeringWheel==="left"?"левый":"правый"}</span></div>
