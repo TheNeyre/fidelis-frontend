@@ -23,13 +23,15 @@ export const SearchFilters: React.FC<{
   ])
 
   useEffect(()=>{
-    const selectors = Array.from(document.querySelectorAll<HTMLButtonElement>(`.${styles.filterMileageButton}`));
+    const selectors = Array.from(document.querySelectorAll<HTMLButtonElement>(`.${CSS.escape(styles.filterMileageButton!)}`));
     const currentSelector = hasMileage?selectors[1]:selectors[0];
     const secondSelector = hasMileage?selectors[0]:selectors[1];
+    console.log(selectors)
+    if (!currentSelector || !secondSelector) return;
 
     const updateMoverPosition = () => {
-      const mover = document.querySelector<HTMLDivElement>(`.${styles.filterMileageMoverContainer}`);
-      const filters = document.querySelector<HTMLDivElement>(`.${styles.filterMileage}`);
+      const mover = document.querySelector<HTMLDivElement>(`.${CSS.escape(styles.filterMileageMoverContainer!)}`);
+      const filters = document.querySelector<HTMLDivElement>(`.${CSS.escape(styles.filterMileage!)}`);
       if (!mover || !currentSelector || !filters) return;
       const selectorWidth = parseFloat(getComputedStyle(currentSelector).getPropertyValue("width"));
       const selectorOffset = currentSelector.getBoundingClientRect().left;
@@ -37,9 +39,10 @@ export const SearchFilters: React.FC<{
       mover.style.setProperty("width", `${selectorWidth}px`);
       mover.style.setProperty("--filter-mover-offset-x", `${selectorOffset - filtersOffset}px`);
     }; updateMoverPosition();
-    window.addEventListener("resize", updateMoverPosition)
-    currentSelector.classList.add(styles.selected);
-    secondSelector.classList.remove(styles.selected);
+    console.log(1);
+    window.addEventListener("resize", updateMoverPosition);
+    currentSelector.classList.add(styles.selected!);
+    secondSelector.classList.remove(styles.selected!);
     return () => window.removeEventListener("resize", updateMoverPosition);
   },[hasMileage]);
 
@@ -47,8 +50,8 @@ export const SearchFilters: React.FC<{
 
     <div className={styles.filterMileage}>
       <div className={styles.filterMileageMoverContainer}><div className={styles.mover}></div></div>
-      <button className={`${styles.filterMileageButton}`} onClick={()=>setHasMileage(false)}>{"Новые"}</button>
-      <button className={`${styles.filterMileageButton}`} onClick={()=>setHasMileage(true)}>{"С пробегом"}</button>
+      <button className={styles.filterMileageButton} onClick={()=>setHasMileage(false)}>{"Новые"}</button>
+      <button className={styles.filterMileageButton} onClick={()=>setHasMileage(true)}>{"С пробегом"}</button>
     </div>
 
     <div className={styles.dropdownFilters}>

@@ -55,8 +55,10 @@ export default function CompanyActivityFields () {
               header: "Комерческие продажи",
               description: "Поставки для бизнеса, корпоративные автопарки, индивидуальные решения."
             }]
-            .map((fieldData, index) => ( <ActivityFieldCard key={`activity-field-${index}`}
-              numer={fieldData.numer} header={fieldData.header} description={fieldData.description}/> ))
+            .map((fieldData, index) => ( <SpawnAnimationWrapper key={index}>
+              <ActivityFieldCard key={`activity-field-${index}`}
+              numer={fieldData.numer} header={fieldData.header} description={fieldData.description}/>
+            </SpawnAnimationWrapper> ))
           }
         </div>
       </div>

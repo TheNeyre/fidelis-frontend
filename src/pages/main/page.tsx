@@ -15,12 +15,12 @@ export default function MainPage () {
 
   useEffect(()=>{
 
-    const downbar = document.querySelector<HTMLDivElement>(`.${styles.downbarContainer}`);
-    if (downbar) downbar.classList.add(styles.downbarSlideIn);
+    const downbar = document.querySelector<HTMLDivElement>(`.${CSS.escape(styles.downbarContainer!)}`);
+    if (downbar) downbar.classList.add(styles.downbarSlideIn!);
     const windowScrollHandle = () => {
       if (!downbar) return;
-      if (window.scrollY !== 0) downbar.classList.remove(styles.downbarSlideIn);
-      else downbar.classList.add(styles.downbarSlideIn);
+      if (window.scrollY !== 0) downbar.classList.remove(styles.downbarSlideIn!);
+      else downbar.classList.add(styles.downbarSlideIn!);
     }
     const windowResizeHandle = () => {
     const coefficient = (window.innerWidth/2000) - .15;

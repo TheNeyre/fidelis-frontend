@@ -1,7 +1,7 @@
 body {
   width: 100vw;
   background-color: rgb(200, 222, 255);
-
+  scrollbar-width: none;
 }
 
 * {
@@ -9,6 +9,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
 :root {

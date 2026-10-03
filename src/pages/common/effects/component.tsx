@@ -40,8 +40,8 @@ export const SpawnAnimationWrapper: React.FC<{
       const currentTop = spawner.getBoundingClientRect().top;
       if (currentTop < bottomTrigger) {
         if (onSpawn) onSpawn();
-        if (delay !== 0) setTimeout(()=>spawner.classList.add(styles.spawn), delay*1000);
-        else spawner.classList.add(styles.spawn);
+        if (delay !== 0) setTimeout(()=>spawner.classList.add(styles.spawn!), delay*1000);
+        else spawner.classList.add(styles.spawn!);
       }
     }
     scrollCheck(); window.addEventListener("scroll", scrollCheck);

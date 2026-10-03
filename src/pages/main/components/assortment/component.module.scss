@@ -36,7 +36,7 @@
   .filterMileageMoverContainer {
     position: absolute;
     width: 100px;
-    inset: 0;
+    top: 0; bottom: 0;
     --filter-mover-offset-x: 0;
     left: var(--filter-mover-offset-x);
     box-sizing: border-box;

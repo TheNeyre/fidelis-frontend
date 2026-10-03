@@ -29,11 +29,11 @@ export const DropdownSelectorInput: React.FC<{
   useEffect(()=>{
     if (!dropdownRef.current || !dropdownInputRef.current) return;
     isOpen?
-    dropdownRef.current.classList.add(styles.open):
-    dropdownRef.current.classList.remove(styles.open);
+    dropdownRef.current.classList.add(styles.open!):
+    dropdownRef.current.classList.remove(styles.open!);
     isSelected?
-    dropdownInputRef.current.classList.add(styles.selected):
-    dropdownInputRef.current.classList.remove(styles.selected);
+    dropdownInputRef.current.classList.add(styles.selected!):
+    dropdownInputRef.current.classList.remove(styles.selected!);
   }, [isOpen, isSelected]);
 
   useEffect(()=>{
@@ -54,7 +54,7 @@ export const DropdownSelectorInput: React.FC<{
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Escape") setIsOpen(false);
-    if (event.key === "Enter" && filteredItems.length === 1) handleItemSelect(filteredItems[0]);
+    if (event.key === "Enter" && filteredItems.length === 1) handleItemSelect(filteredItems[0]!);
   } 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => { setInputValue(event.target.value); setIsOpen(true) }
   const handleItemSelect = (item: string) => {

@@ -43,7 +43,7 @@ export default function BitrixForm () {
 
 
   useEffect(()=>{
-    const formInputs = document.querySelectorAll<HTMLInputElement>(`.${styles.formInputContainer}`);
+    const formInputs = document.querySelectorAll<HTMLInputElement>(`.${CSS.escape(styles.formInputContainer!)}`);
     // const onInputChange = (event: Event) => {
     //   const parent = event.currentTarget as HTMLDivElement;
     //   const target = event.target as HTMLInputElement;
@@ -54,11 +54,11 @@ export default function BitrixForm () {
     // }
     const oninputFocusIn = (event: Event) => {
       const parent = event.currentTarget as HTMLDivElement;
-      parent.classList.add(styles.focused);
+      parent.classList.add(styles.focused!);
     }
     const oninputFocusOut = (event: Event) => {
       const parent = event.currentTarget as HTMLDivElement;
-      parent.classList.remove(styles.focused);
+      parent.classList.remove(styles.focused!);
     }
     formInputs.forEach((formInput) => {
       // formInput.addEventListener("input", onInputChange);

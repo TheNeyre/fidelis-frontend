@@ -63,8 +63,8 @@ export default function Footer () {
     if (!text) return;
     if (!copiedTextBlockRef.current) return;
     navigator.clipboard.writeText(text);
-    copiedTextBlockRef.current.classList.add(styles.copied);
-    setTimeout(()=>{copiedTextBlockRef.current?.classList.remove(styles.copied)}, 1000);
+    copiedTextBlockRef.current.classList.add(styles.copied!);
+    setTimeout(()=>{copiedTextBlockRef.current?.classList.remove(styles.copied!)}, 1000);
   }
 
   return ( <footer id="contacts" className={styles.footerContainer}>
