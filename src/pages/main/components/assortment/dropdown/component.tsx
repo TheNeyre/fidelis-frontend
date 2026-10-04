@@ -4,12 +4,13 @@ import { useState, useEffect, useRef } from 'react';
 export const DropdownSelectorInput: React.FC<{
   options: Array<string>,
   placeholder?: string,
-  onSelect?: (item: string) => void | null,
+  onSelect?: (item: string) => void,
+  onReset?: () => void,
   isError?: boolean,
   isLoading?: boolean,
   isDisabled?: boolean,
   dropdownName?: string,
-}> = ({options, onSelect = null, placeholder = "Введите текст..",
+}> = ({options, onSelect = null, onReset = null, placeholder = "Введите текст..",
   isError = false, isLoading = false, isDisabled = false, dropdownName = "DROPDOWN-DEFAULT"}) => {
 
   const [ filteredItems, setFilteredItems ] = useState<Array<string>>([]);
@@ -65,7 +66,9 @@ export const DropdownSelectorInput: React.FC<{
   const resetSelectedItem = () => {
     setIsSelected(false);
     setInputValue(""); //setSelectedItem(null);
-    setIsOpen(false); if (onSelect) onSelect("");
+    setIsOpen(false);
+    if (onSelect) onSelect("");
+    if (onReset) onReset();
   }
 
   return ( <div className={styles.dropdownContainer} ref={dropdownContainerRef}>

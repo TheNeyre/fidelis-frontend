@@ -63,6 +63,10 @@ export default function SearchAssortment () {
     setfilteredAutoList(tempAutoList);
   }, [ brand, model, hasMileage, upload ]);
 
+  useEffect(()=>{
+    if (!brand) setModelList([]);
+  }, [ brand ])
+
   return ( <div className={styles.searchAssortmentContainer} id="assortment" >
     <SpawnAnimationWrapper><div className={styles.searchAssortmentTitle}>{"Подберите себе автомобиль"}</div></SpawnAnimationWrapper>
     
